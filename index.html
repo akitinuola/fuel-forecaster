@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="rgba(54, 162, 235, 1)">
+  <meta name="description" content="This is the description">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <title>Fuel Forecaster</title>
+  <link rel="stylesheet" href="index.css">
+
+  <script>
+    // main.js
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="chartCard">
+    <div class="chartBox">
+      <div class="menu">
+        <p class="selected" id="historicalMode">Historical</p>
+        <p id="forecastMode">Forecast</p>
+      </div>
+      <div class="chart">
+        <canvas id="myChart" height="250"></canvas>
+        <p id="NoDate">
+          No date available for this filter
+        </p>
+      </div>
+
+      <div class="filter" id="filter-con">
+        <div class="overlay"></div>
+        <label for="selectedPeriod">Select start month</label>
+        <input id="selectedPeriod" type="month" name="selectedPeriod" >
+      </div>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
